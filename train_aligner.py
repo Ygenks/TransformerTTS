@@ -12,6 +12,13 @@ from utils.metrics import attention_score
 from utils.spectrogram_ops import mel_lengths, phoneme_lengths
 from utils.alignments import get_durations_from_alignment
 
+from tensorflow.keras import mixed_precision
+policy = mixed_precision.Policy('mixed_float16')
+mixed_precision.set_global_policy(policy)
+
+print('Compute dtype: %s' % policy.compute_dtype)
+print('Variable dtype: %s' % policy.variable_dtype)
+
 np.random.seed(42)
 tf.random.set_seed(42)
 
